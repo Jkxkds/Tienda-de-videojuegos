@@ -4,7 +4,7 @@
  */
 package com.ilerna.clientes.Controller;
 
-import com.ilerna.clientes.service.GestorFabricantes;
+import com.ilerna.clientes.service.GestorVideojuego;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,18 +17,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author Alumno
  */
+
 @Controller
-@RequestMapping("/fabricante")
-public class ControllerFabricante {
+@RequestMapping("/videojuego")
+public class ControllerVideojuego {
     
-    GestorFabricantes gf = new GestorFabricantes ();
+    GestorVideojuego gf = new GestorVideojuego ();
     @GetMapping("/")
     public String crud(Model model){
-        String valorfinal="./fabricante/listarfabricante";
+        String valorfinal="./videojuego/listarvideojuego";
         try {
-            model.addAttribute("fabricantes", gf.listar());
+            model.addAttribute("videojuegos", gf.listar());
         } catch (SQLException ex) {
-            Logger.getLogger(ControllerFabricante.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
             valorfinal="error";
         }
         return valorfinal;
