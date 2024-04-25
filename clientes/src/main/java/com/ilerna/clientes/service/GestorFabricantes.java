@@ -29,7 +29,9 @@ public class GestorFabricantes {
             Fabricante p = new Fabricante(
                     rs.getInt("id"),
                     rs.getString("nombre"),
-                    rs.getInt("edad")
+                    rs.getString("apellido"),
+                    rs.getString("telefono"),
+                    rs.getString("direccion")
             );
             lista.add(p);
         }

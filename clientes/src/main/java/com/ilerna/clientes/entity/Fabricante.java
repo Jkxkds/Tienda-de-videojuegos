@@ -11,20 +11,26 @@ package com.ilerna.clientes.entity;
 public class Fabricante {
     private int id; // Autoincremental, no incluido en el constructor
     private String nombre;
-    private int edad;
+    private String apellido;
+    private String telefono;
+    private String direccion;
 
     public Fabricante() {
     }
 
-    public Fabricante(String nombre, int edad) {
+    public Fabricante(String nombre, String apellido, String telefono, String direccion) {
         this.nombre = nombre;
-        this.edad = edad;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
     }
 
-    public Fabricante(int id, String nombre, int edad) {
+    public Fabricante(int id, String nombre, String apellido, String telefono, String direccion) {
         this.id = id;
         this.nombre = nombre;
-        this.edad = edad;
+        this.apellido = apellido;
+        this.telefono = telefono;
+        this.direccion = direccion;
     }
 
     public int getId() {
@@ -43,11 +49,28 @@ public class Fabricante {
         this.nombre = nombre;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
 }
