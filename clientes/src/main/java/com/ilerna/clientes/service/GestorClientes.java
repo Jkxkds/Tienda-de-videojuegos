@@ -5,8 +5,6 @@ import com.ilerna.clientes.entity.Cliente;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +16,11 @@ public class GestorClientes {
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String strFechaFormateada = sdf.format(p.getFechaNacimiento());
         // estring de inserción
-        String cadena = "INSERT INTO cliente(nombre, apellido, telefono, correo, direccion) VALUES ('"
+        String cadena = "INSERT INTO cliente(nombre, edad, telefono) VALUES ('"
                 + p.getNombre() + "','"
-                + p.getApellido() + "','"
+                + p.getEdad() + "','"
                 + p.getTelefono() + "','"
-                + p.getCorreo() + "','"
-                + p.getDireccion() + "');";
+                ;
         //System.out.println(cadena);
         consulta.executeUpdate(cadena);
         consulta.close();
@@ -37,10 +34,8 @@ public class GestorClientes {
             Cliente p = new Cliente(
                     rs.getInt("id"),
                     rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("correo"),
-                    rs.getString("direccion")
+                    rs.getInt("edad"),
+                    rs.getString("telefono")                  
             );
             lista.add(p);
         }
@@ -56,10 +51,8 @@ public class GestorClientes {
             p = new Cliente(
                     rs.getInt("id"),
                     rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("correo"),
-                    rs.getString("direccion")
+                    rs.getInt("edad"),
+                    rs.getString("telefono")                   
             );
         }
         rs.close();
@@ -74,10 +67,8 @@ public class GestorClientes {
         // String de actualización
         String cadena = "UPDATE cliente SET "
                 + "nombre = '" + p.getNombre() + "', "
-                + "apellido = '" + p.getApellido() + "', "
+                + "apellido = '" + p.getEdad() + "', "
                 + "telefono = '" + p.getTelefono() + "', "
-                + "correo = '" + p.getCorreo() + "', "
-                + "direccion = '" + p.getDireccion() + "' "
                 + "WHERE id = " + p.getId();
         // System.out.println(cadena);
         consulta.executeUpdate(cadena);
