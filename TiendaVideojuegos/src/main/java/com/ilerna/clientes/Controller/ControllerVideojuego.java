@@ -21,18 +21,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/videojuego")
 public class ControllerVideojuego {
-    
     GestorVideojuego gf = new GestorVideojuego ();
     @GetMapping("/")
-    public String crud(Model model){
-        String valorfinal="./videojuego/listarvideojuego";
-        try {
-            model.addAttribute("videojuegos", gf.listar());
-        } catch (SQLException ex) {
-            Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
-            valorfinal="error";
-        }
-        return valorfinal;
+public String crud(Model model){
+    String valorfinal = "./videojuego/index.html"; 
+    try {
+        model.addAttribute("videojuego", gf.listar());
+    } catch (SQLException ex) {
+        Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
+        valorfinal = "error";
     }
+    return valorfinal;
+}
+
     
 }
