@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class entrada {
     @GetMapping({"/", "/index"})
     public String index(Model model) {
-        String valorfinal="./index";
+        String valorfinal="videojuego";
+        System.out.println("hola");
         return valorfinal;
     }
     @GetMapping({"/saludar"})
