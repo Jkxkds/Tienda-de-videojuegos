@@ -6,7 +6,6 @@ package com.ilerna.clientes.service;
 
 import com.ilerna.clientes.database.Conexion;
 import com.ilerna.clientes.entity.Cliente;
-import com.ilerna.clientes.entity.Fabricante;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,26 +16,25 @@ import java.util.List;
  *
  * @author Alumno
  */
-public class GestorFabricantes {
+public class GestorCliente  {
     Conexion c = new Conexion();
     
-    public List<Fabricante> listar() throws SQLException {
+    public List<Cliente> listar() throws SQLException {
         Statement consulta = c.conectar().createStatement();
-        ResultSet rs = consulta.executeQuery("SELECT * FROM fabricante");
-        List<Fabricante> lista = new ArrayList<>();
+        ResultSet rs = consulta.executeQuery("SELECT * FROM compra");
+        List<Cliente> lista = new ArrayList<>();
 
         while (rs.next()) {
-            Fabricante p = new Fabricante(
-                    rs.getInt("id"),
+            Cliente c = new Cliente(
                     rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("direccion")
+                    rs.getInt("edad"),
+                    rs.getString("telefono")                  
             );
-            lista.add(p);
+            lista.add(c);
         }
         rs.close();
         consulta.close();
         return lista;
     }
 }
+
