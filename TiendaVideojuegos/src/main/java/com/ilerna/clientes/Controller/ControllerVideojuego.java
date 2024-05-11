@@ -21,7 +21,7 @@ import com.ilerna.clientes.service.GestorVideojuego;
  * @author Alumno
  */
 @Controller
-@RequestMapping("/videojuego")
+@RequestMapping("/tienda")
 public class ControllerVideojuego {
     
     @GetMapping("/")
@@ -31,7 +31,7 @@ public class ControllerVideojuego {
         try {
             // Aquí puedes agregar atributos al modelo si es necesario
             model.addAttribute("videojuego", gf.listar());
-            return "redirect:/videojuego.html"; // Redirige a la página de videojuego en la carpeta static
+            return "redirect:/tienda.html"; // Redirige a la página de videojuego en la carpeta static
         } catch (SQLException ex) {
             Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
             return "error"; // En caso de error, redirige a una vista de error
