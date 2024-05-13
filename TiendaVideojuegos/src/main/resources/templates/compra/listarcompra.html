@@ -1,4 +1,5 @@
-<html xmlns:th="https://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Pagina Inicio</title>
     <meta charset="UTF-8">
@@ -24,34 +25,29 @@
 
         <div class="container">
             <div class="pb-2">
-                <a href="http://localhost:8080/cliente/alta"><button type="" class="btn btn-light col-1">Alta</button></a>
+                <!-- Agrega el enlace para agregar una nueva compra si es necesario -->
+                <a href="http://localhost:8080/compra/alta"><button type="" class="btn btn-light col-1">Alta</button></a>
             </div>
             <table class="table table-striped">
                 <thead>
-                <tr class="text-left">
-                    <th colspan = "1" >Accion</th>
-                    <!--    <th>id</th> -->
-                    <th>ID_Cliente</th>
-                    <th>ID_Videojuego</th>
-                    <th>Total</th>
-                </tr>
+                    <tr class="text-left">
+                        <th>Accion</th>
+                        <th>ID</th>
+                        <th>ID Cliente</th>
+                        <th>ID Videojuego</th>
+                        <th>Total</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr th:each="compra : ${compras}">
-                    <td class="align-middle">
-                        <a class="text-decoration-none mx-1" th:href="@{./eliminar?codcompra={id}(id=${compra.id})}">
-                            <img src="/img/delete-bin-line.png" alt="Eliminar">
-                        </a>
-                        <a class="text-decoration-none mx-1" th:href="@{./modificar?codcompra={id}(id=${compra.id})}">
-                            <img src="/img/file-edit-line.png" alt="Modificar">
-                        </a>
-                    </td>
-    
-                    <!-- <td th:text="${cliente.id}"></td> -->
-                    <td th:text="${compra.id_cliente}"></td>
-                    <td th:text="${compra.id_videojuego}"></td>
-                    <td th:text="${compra.total}"></td>
-                </tr>
+                    <tr th:each="compra : ${compras}">
+                        <td class="align-middle">
+                            <!-- Agrega aquí los enlaces de eliminar y modificar si es necesario -->
+                        </td>
+                        <td th:text="${compra.id}"></td>
+                        <td th:text="${compra.id_cliente}"></td>
+                        <td th:text="${compra.id_videojuego}"></td>
+                        <td th:text="${compra.total}"></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -72,4 +68,4 @@
     </script>
     <!-- Seleccionar el elemento en foco por defecto -->
 </body>
-
+</html>
