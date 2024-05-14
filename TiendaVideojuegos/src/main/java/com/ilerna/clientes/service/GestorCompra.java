@@ -26,7 +26,6 @@ public class GestorCompra {
 
         while (rs.next()) {
             Compra c = new Compra(
-                    rs.getInt("id"),
                     rs.getInt("id_cliente"),
                     rs.getInt("id_videojuego"),
                     rs.getInt("total")                  
