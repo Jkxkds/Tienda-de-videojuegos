@@ -8,10 +8,6 @@ btnCart.addEventListener('click', () => {
     containerCartProducts.classList.toggle('hidden-cart');
 });
 
-var boton = document.getElementById("submit");
-boton.onclick = function() {
-    alert("¡Has hecho clic en el botón!");
-};
 
 var eliminar = document.getElementById("eliminar");
 eliminar.onclick = function() {
