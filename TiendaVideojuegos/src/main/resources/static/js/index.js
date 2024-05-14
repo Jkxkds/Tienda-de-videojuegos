@@ -2,6 +2,7 @@ const btnCart = document.querySelector('.container-icon');
 const containerCartProducts = document.querySelector('.container-cart-products');
 
 let total_compra=0;
+let contador_prod = 0;
 
 btnCart.addEventListener('click', () => {
     containerCartProducts.classList.toggle('hidden-cart');
@@ -28,10 +29,12 @@ addToCartButtons.forEach(button => {
         const productInfoContainer = button.closest('.info-product');
         const productName = productInfoContainer.querySelector('h2').textContent;
         const productPrice = productInfoContainer.querySelector('.price').textContent;
-        const productoPrecio = parseInt(productInfoContainer.querySelector('.price').textContent.replace('$', ''), 10);
+        const productoPrecio = parseInt(productInfoContainer.querySelector('.price').textContent.replace('€', ''), 10);
         total_compra+= productoPrecio;
+        contador_prod+=1;
         const totalPagarElement = document.querySelector('.total-pagar');
             totalPagarElement.textContent = `$${total_compra}`;
+        document.getElementById('contador-productos').textContent = contador_prod;
 
         
 
@@ -65,6 +68,9 @@ addToCartButtons.forEach(button => {
             total_compra-=productoPrecio;
             const totalPagarElement = document.querySelector('.total-pagar');
             totalPagarElement.textContent = `$${total_compra}`;
+
+            contador_prod-=1;
+            document.getElementById('contador-productos').textContent = contador_prod;
         });
     });
 });
