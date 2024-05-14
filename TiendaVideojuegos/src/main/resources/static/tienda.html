@@ -49,7 +49,7 @@
 
 <!-- A partir de aqui son los items (productos para vender)-->
 <div class="container-items">
-    <div class="item" th:each="videojuego : ${videojuegos}">
+    <div th:each="videojuego : ${videojuegos}" class="item">
         <figure>
             <img src="img/zapatillas.avif" alt="producto"/>
         </figure>
