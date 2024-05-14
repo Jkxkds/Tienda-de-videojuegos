@@ -58,21 +58,38 @@ addToCartButtons.forEach(button => {
         const deleteButton = cartProduct.querySelector('.icon-close');
 
         // Escuchar el evento de clic en el botón "Eliminar producto"
-        deleteButton.addEventListener('click', () => {
-            // Eliminar el elemento del producto del carrito
-            containerCartProducts.removeChild(cartProduct);
-            total_compra-=productoPrecio;
-            const totalPagarElement = document.querySelector('.total-pagar');
-            totalPagarElement.textContent = `$${total_compra}`;
+deleteButton.addEventListener('click', () => {
+    // Eliminar el elemento del producto del carrito
+    containerCartProducts.removeChild(cartProduct);
+    total_compra -= productoPrecio;
+    const totalPagarElement = document.querySelector('.total-pagar');
+    totalPagarElement.textContent = `$${total_compra}`;
 
-            contador_prod-=1;
-            document.getElementById('contador-productos').textContent = contador_prod;
-        });
+    contador_prod -= 1;
+    document.getElementById('contador-productos').textContent = contador_prod;
+});
+
     });
 });
 
-// Escuchar el evento de clic en el botón "Comprar"
+// Obtener el botón "Comprar"
 const submitButton = document.getElementById("submit");
+
+// Escuchar el evento de clic en el botón "Comprar"
 submitButton.addEventListener('click', () => {
-    alert("¡Has hecho clic en el botón de comprar!");
+    // Obtener los productos seleccionados
+    const products = [];
+    const cartProducts = document.querySelectorAll('.cart-product');
+    cartProducts.forEach(cartProduct => {
+        const productName = cartProduct.querySelector('.titulo-producto-carrito');
+        const productPrice = cartProduct.querySelector('.precio-producto-carrito');
+        if (productName && productPrice) {
+            products.push({ name: productName.textContent, price: productPrice.textContent });
+        }
+    });
+
+    // Codificar los productos como JSON y pasarlos como parámetro de consulta en la URL
+    const encodedProducts = encodeURIComponent(JSON.stringify(products));
+    // Redirigir a pago.php en la carpeta correspondiente
+    window.location.href = `http://localhost:8080/Tienda-de-videojuegos/TiendaVideojuegos/src/main/resources/static/php/pago.php?products=${encodedProducts}`;
 });
