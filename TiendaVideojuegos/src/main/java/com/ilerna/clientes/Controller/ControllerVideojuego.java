@@ -30,7 +30,7 @@ public class ControllerVideojuego {
 
         try {
             // Aquí puedes agregar atributos al modelo si es necesario
-            model.addAttribute("videojuego", gf.listar());
+            model.addAttribute("videojuegos", gf.listar());
             return "redirect:/tienda.html"; // Redirige a la página de videojuego en la carpeta static
         } catch (SQLException ex) {
             Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
