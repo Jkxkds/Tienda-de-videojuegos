@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -65,10 +65,12 @@
                                     <h2>Zapatos Nike</h2>
 					<p class="price">$80</p>                                   
                                     -->
-                                <td>
-                                    <h2 th:text="${videojuego.nombre}"></h2>
-                                </td>
-                                <p class="price">$80</p> 
+                                    <tr th:each="videojuego : ${videojuego}">
+                                        <td th:text="${videojuego.nombre}"></td>
+                                             <td class="price" th:text="${videojuego.precio}">
+                                        </td>
+                                    </tr>
+                                 
                                         
 					<button class="add-to-cart-btn">Añadir al carrito</button>
 				</div>
