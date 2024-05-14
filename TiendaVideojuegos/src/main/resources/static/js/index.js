@@ -79,17 +79,27 @@ const submitButton = document.getElementById("submit");
 submitButton.addEventListener('click', () => {
     // Obtener los productos seleccionados
     const products = [];
-    const cartProducts = document.querySelectorAll('.cart-product');
+    let cartProducts = document.querySelectorAll('.cart-product');
+    cartProducts = Array.from(cartProducts);
+    cartProducts.splice(0, 1);
     cartProducts.forEach(cartProduct => {
-        const productName = cartProduct.querySelector('.titulo-producto-carrito');
-        const productPrice = cartProduct.querySelector('.precio-producto-carrito');
+        var productName = cartProduct.querySelector('.titulo-producto-carrito').textContent;
+        let productPrice = cartProduct.querySelector('.precio-producto-carrito').textContent.replace('€', '');
         if (productName && productPrice) {
-            products.push({ name: productName.textContent, price: productPrice.textContent });
+            products.push({ name: productName, price: productPrice });
         }
     });
 
-    // Codificar los productos como JSON y pasarlos como parámetro de consulta en la URL
-    const encodedProducts = encodeURIComponent(JSON.stringify(products));
     // Redirigir a pago.php en la carpeta correspondiente
-    window.location.href = `http://localhost:8080/Tienda-de-videojuegos/TiendaVideojuegos/src/main/resources/static/php/pago.php?products=${encodedProducts}`;
+    fetch(`${window.location.href.replace('/tienda.html','')}/tienda/comprar/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(products)
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data);
+    });
 });
