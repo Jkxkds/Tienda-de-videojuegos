@@ -26,7 +26,7 @@ public class GestorVideojuego {
 
         while (rs.next()) {
             Videojuego v = new Videojuego(
-                    rs.getInt("id"),
+                    rs.getInt("id_videojuego"),
                     rs.getString("nombre"),
                     rs.getString("tematica"),
                     rs.getInt("precio"),
