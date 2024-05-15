@@ -29,8 +29,7 @@ public class GestorVideojuego {
                     rs.getInt("id_videojuego"),
                     rs.getString("nombre"),
                     rs.getString("tematica"),
-                    rs.getInt("precio"),
-                    rs.getString("disponibilidad")
+                    rs.getInt("precio")
             );
             lista.add(v);
         }

@@ -14,25 +14,22 @@ public class Videojuego {
     private String nombre;
     private String tematica;
     private int precio;
-    private String disponibilidad;
     
     public Videojuego(){
         
     }
 
-    public Videojuego(String nombre, String tematica, int precio, String disponibilidad) {
+    public Videojuego(String nombre, String tematica, int precio) {
         this.nombre = nombre;
         this.tematica = tematica;
         this.precio = precio;
-        this.disponibilidad = disponibilidad;
     }
 
-    public Videojuego(int id, String nombre, String tematica, int precio, String disponibilidad) {
+    public Videojuego(int id, String nombre, String tematica, int precio) {
         this.id = id;
         this.nombre = nombre;
         this.tematica = tematica;
         this.precio = precio;
-        this.disponibilidad = disponibilidad;
     }
 
     public int getId() {
@@ -65,13 +62,5 @@ public class Videojuego {
 
     public void setPrecio(int precio) {
         this.precio = precio;
-    }
-
-    public String getDisponibilidad() {
-        return disponibilidad;
-    }
-
-    public void setDisponibilidad(String disponibilidad) {
-        this.disponibilidad = disponibilidad;
     }
 }
