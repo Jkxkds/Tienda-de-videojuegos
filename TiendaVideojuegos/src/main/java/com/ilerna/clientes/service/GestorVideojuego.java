@@ -12,11 +12,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Alumno
  */
+@Service
 public class GestorVideojuego {
     Conexion c = new Conexion();
     
@@ -29,7 +31,6 @@ public class GestorVideojuego {
             Videojuego v = new Videojuego(
                     rs.getInt("id_videojuego"),
                     rs.getString("nombre"),
-                    rs.getString("tematica"),
                     rs.getInt("precio")
             );
             lista.add(v);
@@ -43,7 +44,7 @@ public class GestorVideojuego {
     String query = "INSERT INTO videojuego (nombre, precio) VALUES (?, ?)";
     try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
         pstmt.setString(1, videojuego.getNombre());
-        pstmt.setInt(2, videojuego.getPrecio()); // Índice corregido
+        pstmt.setInt(2, videojuego.getPrecio());
         pstmt.executeUpdate();
     }
 }

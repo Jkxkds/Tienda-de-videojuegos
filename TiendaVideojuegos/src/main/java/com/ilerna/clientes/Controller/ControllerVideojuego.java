@@ -22,60 +22,39 @@ import com.ilerna.clientes.entity.Videojuego;
 import com.ilerna.clientes.service.GestorVideojuego;
 import java.sql.PreparedStatement;
 
-@Controller
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
 @RequestMapping("/tienda")
 public class ControllerVideojuego {
 
-    @GetMapping("/")
-    public String crud(Model model) {
-        GestorVideojuego gf = new GestorVideojuego();
+    private final GestorVideojuego gestorVideojuego;
+
+    // Inyecta GestorVideojuego en el constructor
+    public ControllerVideojuego(GestorVideojuego gestorVideojuego) {
+        this.gestorVideojuego = gestorVideojuego;
+    }
+
+    // Método para procesar la solicitud de compra
+    @PostMapping("/comprar/")
+    public String comprar(@RequestBody List<Map<String, String>> data) {
         try {
-            model.addAttribute("videojuegos", gf.listar());
-            return "redirect:/tienda.html";
+            for (Map<String, String> item : data) {
+                String nombre = item.get("name");
+                double precio = Double.parseDouble(item.get("price"));
+                // Crea un nuevo Videojuego con los datos recibidos y lo agrega a la base de datos
+                Videojuego videojuego = new Videojuego(nombre, (int) precio);
+                gestorVideojuego.agregarVideojuego(videojuego);
+            }
+            return "Compra realizada con éxito";
         } catch (SQLException ex) {
             Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
-            return "error";
+            return "Error al procesar la compra";
+        } catch (NumberFormatException ex) {
+            Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, "Error de formato en el precio", ex);
+            return "Error al procesar la compra";
         }
     }
-@PostMapping("/comprar")
-public String comprar(@RequestBody String data) {
-    try {
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<Map<String, String>> unparsedData = objectMapper.readValue(data, new TypeReference<List<Map<String, String>>>() {});
-
-        for (Map<String, String> item : unparsedData) {
-            String nombre = item.get("nombre");
-            double precio = Double.parseDouble(item.get("precio"));
-            System.out.println("Nombre: " + nombre + ", Precio: " + precio);
-            
-            Videojuego videojuego = new Videojuego(nombre, (int) precio);
-            agregarVideojuego(videojuego);
-        }
-
-        return "redirect:/tienda/";
-    } catch (IOException ex) {
-        Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
-        return "error";
-    } catch (NumberFormatException ex) {
-        Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, "Error de formato en el precio", ex);
-        return "error";
-    } catch (SQLException ex) {
-        Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, "Error al registrar la compra", ex);
-        return "error";
-    }
-}
-
-// He tenido que añadirlo aquí porque no me dejaba llamar al GestorVideojuego desde comprar, porque tendría que recibir parámetros los cuales ya recibe 
-//pero como String data y para que los reciba de otra forma sería cambiar todo el formulario
-public void agregarVideojuego(Videojuego videojuego) throws SQLException {
-        Conexion c = new Conexion();
-
-    String query = "INSERT INTO videojuego (nombre, precio) VALUES (?, ?)";
-    try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
-        pstmt.setString(1, videojuego.getNombre());
-        pstmt.setInt(2, videojuego.getPrecio());
-        pstmt.executeUpdate();
-    }
-}
-
 }

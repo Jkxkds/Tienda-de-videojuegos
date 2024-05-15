@@ -23,7 +23,7 @@ public class Videojuego {
         this.precio = precio;
     }
 
-    public Videojuego(int id, String nombre, String tematica, int precio) {
+    public Videojuego(int id, String nombre, int precio) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;

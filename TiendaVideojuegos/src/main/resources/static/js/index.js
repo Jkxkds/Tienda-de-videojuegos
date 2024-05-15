@@ -72,25 +72,16 @@ deleteButton.addEventListener('click', () => {
     });
 });
 
-// Obtener el botón "Comprar"
 const submitButton = document.getElementById("submit");
 
-// Escuchar el evento de clic en el botón "Comprar"
 submitButton.addEventListener('click', () => {
-    // Obtener los productos seleccionados
-    const products = [];
-    let cartProducts = document.querySelectorAll('.cart-product');
-    cartProducts = Array.from(cartProducts);
-    cartProducts.splice(0, 1);
-    cartProducts.forEach(cartProduct => {
-        var productName = cartProduct.querySelector('.titulo-producto-carrito').textContent;
-        let productPrice = cartProduct.querySelector('.precio-producto-carrito').textContent.replace('€', '');
-        if (productName && productPrice) {
-            products.push({ name: productName, price: productPrice });
-        }
-    });
+    // Construir el objeto JSON con los datos de los productos seleccionados
+    const products = [
+        // Datos de los productos seleccionados
+    ];
 
-    fetch(`${window.location.href.replace('/tienda.html','')}/tienda/comprar/`, {
+    // Enviar la solicitud al backend
+    fetch('/tienda/comprar/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -102,6 +93,7 @@ submitButton.addEventListener('click', () => {
         console.log(data);
     });
 });
+
 
 document.getElementById("alta").addEventListener("click", function(){
     window.location.href = "alta.html";
