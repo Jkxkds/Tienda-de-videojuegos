@@ -47,15 +47,5 @@ public class GestorVideojuego {
         pstmt.executeUpdate();
     }
 }
-    
-    public void registrarCompra(int idCliente, int idVideojuego, double total) throws SQLException {
-    String query = "INSERT INTO compra (id_cliente, id_videojuego, total) VALUES (?, ?, ?)";
-    try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
-        pstmt.setInt(1, idCliente);
-        pstmt.setInt(2, idVideojuego);
-        pstmt.setDouble(3, total);
-        pstmt.executeUpdate();
-    } 
-}
 
 }

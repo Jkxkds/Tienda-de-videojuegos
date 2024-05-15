@@ -18,6 +18,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilerna.clientes.database.Conexion;
+import com.ilerna.clientes.entity.Videojuego;
 import com.ilerna.clientes.service.GestorVideojuego;
 import java.sql.PreparedStatement;
 
@@ -40,14 +41,15 @@ public class ControllerVideojuego {
 public String comprar(@RequestBody String data) {
     try {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<Map<String, String>> unparsedData = objectMapper.readValue(data, new TypeReference<List<Map<String, String>>>() {
-        });
+        List<Map<String, String>> unparsedData = objectMapper.readValue(data, new TypeReference<List<Map<String, String>>>() {});
 
         for (Map<String, String> item : unparsedData) {
             String nombre = item.get("nombre");
             double precio = Double.parseDouble(item.get("precio"));
             System.out.println("Nombre: " + nombre + ", Precio: " + precio);
-            registrarCompra(1, 1, precio); // Aquí se deben proporcionar los IDs de cliente y videojuego correctos
+            
+            Videojuego videojuego = new Videojuego(nombre, (int) precio);
+            agregarVideojuego(videojuego);
         }
 
         return "redirect:/tienda/";
@@ -63,14 +65,15 @@ public String comprar(@RequestBody String data) {
     }
 }
 
-public void registrarCompra(int idCliente, int idVideojuego, double total) throws SQLException {
+// He tenido que añadirlo aquí porque no me dejaba llamar al GestorVideojuego desde comprar, porque tendría que recibir parámetros los cuales ya recibe 
+//pero como String data y para que los reciba de otra forma sería cambiar todo el formulario
+public void agregarVideojuego(Videojuego videojuego) throws SQLException {
         Conexion c = new Conexion();
 
-    String query = "INSERT INTO compra (id_cliente, id_videojuego, total) VALUES (?, ?, ?)";
+    String query = "INSERT INTO videojuego (nombre, precio) VALUES (?, ?)";
     try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
-        pstmt.setInt(1, idCliente);
-        pstmt.setInt(2, idVideojuego);
-        pstmt.setDouble(3, total);
+        pstmt.setString(1, videojuego.getNombre());
+        pstmt.setInt(2, videojuego.getPrecio());
         pstmt.executeUpdate();
     }
 }
