@@ -13,7 +13,7 @@ body{
     font-family: 'Lato';
     color: #333; 
     background-color: #e0f3ff;
-    background-image: linear-gradient(135deg, #a0e4ff 10%, #94dfff 100%);
+    background: radial-gradient(circle, #00aeff, #0094d8, #007db8);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
