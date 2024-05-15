@@ -60,17 +60,4 @@ public class ControllerVideojuego {
         return "index";//TODO cambiar
     }
     
-    @GetMapping("/alta")
-    public String alta(Model model) {
-        GestorVideojuego gf = new GestorVideojuego();
-
-            try {
-                // Aquí puedes agregar atributos al modelo si es necesario
-                model.addAttribute("videojuegos", gf.listar());
-                return "redirect:/alta.html"; // Redirige a la página de alta en la carpeta static
-            } catch (SQLException ex) {
-                Logger.getLogger(ControllerVideojuego.class.getName()).log(Level.SEVERE, null, ex);
-                return "error"; // En caso de error, redirige a una vista de error
-            }
-    }
 }
