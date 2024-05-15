@@ -102,3 +102,7 @@ submitButton.addEventListener('click', () => {
         console.log(data);
     });
 });
+
+document.getElementById("alta").addEventListener("click", function(){
+    window.location.href = "alta.html";
+});

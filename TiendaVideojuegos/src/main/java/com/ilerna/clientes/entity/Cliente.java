@@ -20,7 +20,7 @@ public class Cliente {
     }
 
     public Cliente() {
-        
+
     }
 
     public int getId() {
@@ -53,6 +53,15 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", edad=" + edad +
+                ", telefono='" + telefono + '\'' +
+                '}';
     }
 
 }
