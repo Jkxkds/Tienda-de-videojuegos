@@ -17,22 +17,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  * @author Alumno
  */
-
 @Controller
 @RequestMapping("/compra")
 public class ControllerCompra {
-    
-    GestorCompra gf = new GestorCompra ();
+
+    GestorCompra gf = new GestorCompra();
+
     @GetMapping("/")
-    public String crud(Model model){
-        String valorfinal="./compra/listarcompra";
+    public String crud(Model model) {
         try {
             model.addAttribute("compras", gf.listar());
+            return "redirect:/compra.html";
         } catch (SQLException ex) {
             Logger.getLogger(ControllerCompra.class.getName()).log(Level.SEVERE, null, ex);
-            valorfinal="error";
+            return "error";
         }
-        return valorfinal;
     }
-    
 }
