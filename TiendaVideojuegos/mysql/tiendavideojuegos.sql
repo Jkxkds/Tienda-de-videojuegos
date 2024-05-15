@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-05-2024 a las 09:06:21
+-- Tiempo de generación: 15-05-2024 a las 14:12:45
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.2
 
@@ -79,7 +79,13 @@ CREATE TABLE `videojuego` (
 --
 
 INSERT INTO `videojuego` (`id_videojuego`, `nombre`, `tematica`, `precio`) VALUES
-(1, 'nombreVideojuego1', 'accion', 50);
+(1, 'Black Ops II', 'Accion', 14),
+(2, 'Black Ops III', 'Accion', 39),
+(3, 'Black Ops IV', 'Accion', 42),
+(4, 'Hogwarts Legacy', 'Fantasia', 45),
+(5, 'Super Mario Bros Won', 'Plataformas', 44),
+(6, 'Tekken 8', 'Lucha', 37),
+(7, 'Diablo IV', 'Accion-RPG', 69);
 
 --
 -- Índices para tablas volcadas
@@ -118,7 +124,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `videojuego`
 --
 ALTER TABLE `videojuego`
-  MODIFY `id_videojuego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_videojuego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
