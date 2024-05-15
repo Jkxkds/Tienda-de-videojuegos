@@ -57,7 +57,7 @@ public class ControllerVideojuego {
             String price = item.get("price");
             System.out.println("Name: " + name + ", Price: " + price);
         }
-        return "index";//TODO cambiar
+        return "index";
     }
     
 }
