@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ilerna.clientes.service.GestorVideojuego;
+import java.util.Map;
 
 /**
  * Controlador para manejar las solicitudes relacionadas con los videojuegos.
@@ -57,8 +58,5 @@ public class ControllerVideojuego {
             System.out.println("Name: " + name + ", Price: " + price);
         }
         return "index";//TODO cambiar
-    }
-
-
-        
+    }      
 }
