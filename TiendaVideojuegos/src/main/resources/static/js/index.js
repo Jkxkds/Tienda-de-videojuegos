@@ -1,86 +1,86 @@
 const btnCart = document.querySelector('.container-icon');
 const containerCartProducts = document.querySelector('.container-cart-products');
 
-let total_compra=0;
-let contador_prod = 0;
+let totalCompra = 0;
+let contadorProd = 0;
 
 btnCart.addEventListener('click', () => {
     containerCartProducts.classList.toggle('hidden-cart');
 });
 
-
-var eliminar = document.getElementById("eliminar");
-eliminar.onclick = function() {
-    containerCartProducts.removeChild;
-}
-
-// CARRITO
 // Obtener todos los botones "Añadir al carrito"
 const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
 
-// Escuchar el evento de clic en cada botón "Añadir al carrito"
 addToCartButtons.forEach(button => {
     button.addEventListener('click', () => {
-         // Obtener la información del producto asociado a este botón
         const productInfoContainer = button.closest('.info-product');
         const productName = productInfoContainer.querySelector('h2').textContent;
-        const productPrice = productInfoContainer.querySelector('.price').textContent;
-        const productoPrecio = parseInt(productInfoContainer.querySelector('.price').textContent.replace('€', ''), 10);
-        total_compra+= productoPrecio;
-        contador_prod+=1;
+        const productPrice = parseInt(productInfoContainer.querySelector('.price').textContent.replace('€', ''));
+
+        totalCompra += productPrice;
+        contadorProd++;
+
         const totalPagarElement = document.querySelector('.total-pagar');
-            totalPagarElement.textContent = `$${total_compra}`;
-        document.getElementById('contador-productos').textContent = contador_prod;
+        if (totalPagarElement) {
+            totalPagarElement.textContent = `$${totalCompra.toFixed(2)}`;
+        }
 
-        
+        const contadorProductosElement = document.getElementById('contador-productos');
+        if (contadorProductosElement) {
+            contadorProductosElement.textContent = contadorProd;
+        }
 
-
-        // Crear un nuevo elemento para representar el producto en el carrito
         const cartProduct = document.createElement('div');
         cartProduct.classList.add('cart-product');
 
-        // Agregar la información del producto al elemento del carrito
         cartProduct.innerHTML = `
             <div class="info-cart-product">
                 <span class="cantidad-producto-carrito">1</span>
                 <p class="titulo-producto-carrito">${productName}</p>
-                <span class="precio-producto-carrito">${productPrice}</span>
+                <span class="precio-producto-carrito">${productPrice.toFixed(2)}€</span>
             </div>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
             </svg>`;
 
-        // Agregar el elemento del producto al contenedor del carrito, encima del total y debajo del último producto
         const totalElement = document.querySelector('.cart-total');
         containerCartProducts.insertBefore(cartProduct, totalElement);
 
-        // Obtener el botón "Eliminar producto" dentro del elemento del producto del carrito
         const deleteButton = cartProduct.querySelector('.icon-close');
 
-        // Escuchar el evento de clic en el botón "Eliminar producto"
-deleteButton.addEventListener('click', () => {
-    // Eliminar el elemento del producto del carrito
-    containerCartProducts.removeChild(cartProduct);
-    total_compra -= productoPrecio;
-    const totalPagarElement = document.querySelector('.total-pagar');
-    totalPagarElement.textContent = `$${total_compra}`;
-
-    contador_prod -= 1;
-    document.getElementById('contador-productos').textContent = contador_prod;
-});
-
+        deleteButton.addEventListener('click', () => {
+            containerCartProducts.removeChild(cartProduct);
+            totalCompra -= productPrice;
+            if (totalPagarElement) {
+                totalPagarElement.textContent = `$${totalCompra.toFixed(2)}`;
+            }
+            contadorProd--;
+            if (contadorProductosElement) {
+                contadorProductosElement.textContent = contadorProd;
+            }
+        });
     });
 });
 
 const submitButton = document.getElementById("submit");
 
 submitButton.addEventListener('click', () => {
-    // Construir el objeto JSON con los datos de los productos seleccionados
-    const products = [
-        // Datos de los productos seleccionados
-    ];
+    const products = [];
 
-    // Enviar la solicitud al backend
+    const cartProducts = document.querySelectorAll('.cart-product');
+    cartProducts.forEach(product => {
+        const productNameElement = product.querySelector('.titulo-producto-carrito');
+        const productPriceElement = product.querySelector('.precio-producto-carrito');
+        const productQuantityElement = product.querySelector('.cantidad-producto-carrito');
+        
+        if (productNameElement && productPriceElement && productQuantityElement) {
+            const productName = productNameElement.textContent;
+            const productPrice = parseFloat(productPriceElement.textContent.replace('€', ''));
+            const productQuantity = parseInt(productQuantityElement.textContent);
+            products.push({ name: productName, price: productPrice, quantity: productQuantity });
+        }
+    });
+
     fetch('/tienda/comprar/', {
         method: 'POST',
         headers: {
@@ -88,12 +88,16 @@ submitButton.addEventListener('click', () => {
         },
         body: JSON.stringify(products)
     }).then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         return response.json();
     }).then(data => {
         console.log(data);
+    }).catch(error => {
+        console.error('Error:', error);
     });
-});
-
+});    
 
 document.getElementById("alta").addEventListener("click", function(){
     window.location.href = "alta.html";

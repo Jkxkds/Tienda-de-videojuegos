@@ -43,9 +43,10 @@ public class ControllerVideojuego {
         try {
             for (Map<String, String> item : data) {
                 String nombre = item.get("name");
-                double precio = Double.parseDouble(item.get("price"));
+                // Corregir aquí: Convertir el precio de String a int
+                int precio = Integer.parseInt(item.get("price"));
                 // Crea un nuevo Videojuego con los datos recibidos y lo agrega a la base de datos
-                Videojuego videojuego = new Videojuego(nombre, (int) precio);
+                Videojuego videojuego = new Videojuego(nombre, precio);
                 gestorVideojuego.agregarVideojuego(videojuego);
             }
             return "Compra realizada con éxito";
