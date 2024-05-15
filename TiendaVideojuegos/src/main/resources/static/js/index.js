@@ -90,7 +90,6 @@ submitButton.addEventListener('click', () => {
         }
     });
 
-    // Redirigir a pago.php en la carpeta correspondiente
     fetch(`${window.location.href.replace('/tienda.html','')}/tienda/comprar/`, {
         method: 'POST',
         headers: {
