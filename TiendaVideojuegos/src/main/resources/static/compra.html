@@ -4,12 +4,96 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
 <html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+
+<head>
+    <title>Página de compra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Press Start 2P', cursive;
+            background-color: #113357;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            background-color: rgba(19, 35, 53, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #fff;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #1f4068;
+        }
+
+        tr:nth-child(even) {
+            background-color: #2a5298;
+        }
+
+        tr:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Pedidos de Videojuegos</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Cliente</th>
+                    <th>ID Videojuego</th>
+                    <th>Total de Videojuegos</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>101</td>
+                    <td>2</td>
+                    <td>$60.00</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>102</td>
+                    <td>1</td>
+                    <td>$30.00</td>
+                </tr>
+                <!-- Puedes agregar más filas aquí con los datos de los pedidos -->
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
 </html>
