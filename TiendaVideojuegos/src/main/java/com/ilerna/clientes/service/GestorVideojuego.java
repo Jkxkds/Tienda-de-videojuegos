@@ -6,6 +6,7 @@ package com.ilerna.clientes.service;
 
 import com.ilerna.clientes.database.Conexion;
 import com.ilerna.clientes.entity.Videojuego;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -37,4 +38,24 @@ public class GestorVideojuego {
         consulta.close();
         return lista;
     }
+    
+   public void agregarVideojuego(Videojuego videojuego) throws SQLException {
+    String query = "INSERT INTO videojuego (nombre, precio) VALUES (?, ?)";
+    try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
+        pstmt.setString(1, videojuego.getNombre());
+        pstmt.setInt(2, videojuego.getPrecio()); // Índice corregido
+        pstmt.executeUpdate();
+    }
+}
+    
+    public void registrarCompra(int idCliente, int idVideojuego, double total) throws SQLException {
+    String query = "INSERT INTO compra (id_cliente, id_videojuego, total) VALUES (?, ?, ?)";
+    try (PreparedStatement pstmt = c.conectar().prepareStatement(query)) {
+        pstmt.setInt(1, idCliente);
+        pstmt.setInt(2, idVideojuego);
+        pstmt.setDouble(3, total);
+        pstmt.executeUpdate();
+    } 
+}
+
 }

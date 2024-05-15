@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-05-2024 a las 14:12:45
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.2
+-- Tiempo de generación: 16-05-2024 a las 00:19:15
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -32,15 +31,22 @@ CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `edad` int(11) NOT NULL,
-  `telefono` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `telefono` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nombre`, `edad`, `telefono`) VALUES
-(1, 'nombre1', 25, '123456789');
+(1, 'nombre1', 25, '123456789'),
+(2, 'Prueba', 22, 'prueba'),
+(3, 'Prueba', 22, 'prueba'),
+(4, '123', 123, '123123123}'),
+(5, '123', 123, '123123123'),
+(6, '123', 123, '123123123'),
+(7, 'santi ', 22, '640159647'),
+(8, 'AAAA', 25, 'AAAA');
 
 -- --------------------------------------------------------
 
@@ -52,7 +58,7 @@ CREATE TABLE `compra` (
   `id_cliente` int(11) NOT NULL,
   `id_videojuego` int(11) NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `compra`
@@ -70,22 +76,15 @@ INSERT INTO `compra` (`id_cliente`, `id_videojuego`, `total`) VALUES
 CREATE TABLE `videojuego` (
   `id_videojuego` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `tematica` varchar(20) NOT NULL,
   `precio` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `videojuego`
 --
 
-INSERT INTO `videojuego` (`id_videojuego`, `nombre`, `tematica`, `precio`) VALUES
-(1, 'Black Ops II', 'Accion', 14),
-(2, 'Black Ops III', 'Accion', 39),
-(3, 'Black Ops IV', 'Accion', 42),
-(4, 'Hogwarts Legacy', 'Fantasia', 45),
-(5, 'Super Mario Bros Won', 'Plataformas', 44),
-(6, 'Tekken 8', 'Lucha', 37),
-(7, 'Diablo IV', 'Accion-RPG', 69);
+INSERT INTO `videojuego` (`id_videojuego`, `nombre`, `precio`) VALUES
+(1, 'nombreVideojuego1', 50);
 
 --
 -- Índices para tablas volcadas
@@ -118,13 +117,13 @@ ALTER TABLE `videojuego`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `videojuego`
 --
 ALTER TABLE `videojuego`
-  MODIFY `id_videojuego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_videojuego` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

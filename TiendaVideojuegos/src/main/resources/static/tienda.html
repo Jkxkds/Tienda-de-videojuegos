@@ -1,137 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="es">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-		<title>Tienda</title>
-		<link rel="stylesheet" type="text/css" href="./css/styles.css">
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /></head>
-	<body>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tienda</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /></head>
+<body>
 
-		<!-- Tienda y la bolsita de la compra -->
-		<header>
+    <!-- Tienda y la bolsita de la compra -->
+    <header>
                     
-			<h1>Tienda</h1>
+        <h1>Tienda</h1>
                     
-			<div class="container-icon">
-			<nav>
-				<div class="navbar">
-					<div class="container-icon">
-						<!-- svg dibuja la bolsa de la compra-->
-						<span class="material-symbols-outlined" id="alta" style="color:Black; width:150%;height:150%; margin-right: 1em; font-size: 2em;">
-							account_circle
-						</span>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">                
-							<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
-						</svg>
-					</div>
-				</div>
-			</nav>
-				<!-- es el numerito que aparece redondeado en de la bolsa-->
-				<div class="count-products">
-					<span id="contador-productos">0</span>
-				</div>
-
-				<div class="container-cart-products hidden-cart">
-					<div class="cart-product">
-						<div class="info-cart-product">
-                        </div>
-
-						<!-- Este svg dibuja la X al darle en la bolsa -->
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close" id="eliminar">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-						</svg>
-					</div>
-                    <div class="cart-total">
-                        <h3>Total:</h3>
-                        <span class="total-pagar"></span>
-						<button id="submit">Comprar</button>
-
+        <div class="container-icon">
+            <nav>
+                <div class="navbar">
+                    <div class="container-icon">
+                        <!-- svg dibuja la bolsa de la compra-->
+                        <span class="material-symbols-outlined" id="alta" style="color:Black; width:150%;height:150%; margin-right: 1em; font-size: 2em;">
+                            account_circle
+                        </span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-cart">                
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                        </svg>
                     </div>
-				</div>
-			</div>
-		</header>
+                </div>
+            </nav>
+            <!-- es el numerito que aparece redondeado en de la bolsa-->
+            <div class="count-products">
+                <span id="contador-productos">0</span>
+            </div>
 
-		<!-- A partir de aqui son los items (productos para vender)-->
-		<div class="container-items">
-			<div class="item">
-				<figure>
-					<img src="img/bo2.jpg"alt="producto"/>
-				</figure>
-				<div class="info-product">
-                    <h2>Black Ops 2</h2>
-					<p class="price">14€</p>   
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
-			<div class="item">
-				<figure>
-					<img src="img/BO3.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Black Ops 3</h2>
-					<p class="price">39€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
-			<div class="item">
-				<figure>
-					<img src="img/bo4.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Black Ops 4</h2>
-					<p class="price">42€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
-			<div class="item">
-				<figure>
-					<img src="img/hogw.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Hogwarts Legacy</h2>
-					<p class="price">45€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
+            <div class="container-cart-products hidden-cart">
+                <div class="cart-product">
+                    <div class="info-cart-product">
+                    </div>
 
-			<div class="item">
-				<figure>
-					<img src="img/wonder.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Super Mario Bros Wonder</h2>
-					<p class="price">44€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
+                    <!-- Este svg dibuja la X al darle en la bolsa -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon-close" id="eliminar">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </div>
+                <div class="cart-total">
+                    <h3>Total:</h3>
+                    <span class="total-pagar"></span>
+                    <button id="submit">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-			<div class="item">
-				<figure>
-					<img src="img/tekken8.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Tekken 8</h2>
-					<p class="price">37€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
+    <!-- A partir de aqui son los items (productos para vender)-->
+    <div class="container-items">
+        <div class="item">
+            <figure>
+                <img src="img/bo2.jpg"alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Black Ops 2</h2>
+                <p class="price">14€</p>   
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/BO3.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Black Ops 3</h2>
+                <p class="price">39€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/bo4.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Black Ops 4</h2>
+                <p class="price">42€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/hogw.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Hogwarts Legacy</h2>
+                <p class="price">45€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/wonder.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Super Mario Bros Wonder</h2>
+                <p class="price">44€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/tekken8.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Tekken 8</h2>
+                <p class="price">37€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+        <div class="item">
+            <figure>
+                <img src="img/diablo4.jpg" alt="producto"/>
+            </figure>
+            <div class="info-product">
+                <h2>Diablo 4</h2>
+                <p class="price">69€</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        </div>
+    </div>
 
-			<div class="item">
-				<figure>
-					<img src="img/diablo4.jpg" alt="producto"/>
-				</figure>
-				<div class="info-product">
-					<h2>Diablo 4</h2>
-					<p class="price">69€</p>
-					<button class="add-to-cart-btn">Añadir al carrito</button>
-				</div>
-			</div>
-		</div>
-
-		<script src="./js/index.js"></script>
-	</body>
-	
+    <script src="./js/index.js"></script>
+</body>
 </html>
